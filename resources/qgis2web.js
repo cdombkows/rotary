@@ -9,10 +9,33 @@ var map = new ol.Map({
 });
 
 //initial view - epsg:3857 coordinates if not "Match project CRS"
-map.getView().fit([-9971362.541842, 4816867.086655, -8965442.621693, 5945913.463543], map.getSize());
+map.getView().fit([-9966009.899920, 4796095.542520, -8937858.738847, 5950094.305294], map.getSize());
 
 //full zooms only
 map.getView().setProperties({constrainResolution: true});
+
+//change cursor
+function pointerOnFeature(evt) {
+    if (evt.dragging) {
+        return;
+    }
+    var hasFeature = map.hasFeatureAtPixel(evt.pixel, {
+        layerFilter: function(layer) {
+            return layer && (layer.get("interactive"));
+        }
+    });
+    map.getViewport().style.cursor = hasFeature ? "pointer" : "";
+}
+map.on('pointermove', pointerOnFeature);
+function styleCursorMove() {
+    map.on('pointerdrag', function() {
+        map.getViewport().style.cursor = "move";
+    });
+    map.on('pointerup', function() {
+        map.getViewport().style.cursor = "default";
+    });
+}
+styleCursorMove();
 
 ////small screen definition
     var hasTouchScreen = map.getViewport().classList.contains('ol-touch');
@@ -124,7 +147,7 @@ var featureOverlay = new ol.layer.Vector({
     updateWhileInteracting: true // optional, for instant visual feedback
 });
 
-var doHighlight = false;
+var doHighlight = true;
 var doHover = true;
 
 function createPopupField(currentFeature, currentFeatureKeys, layer) {
@@ -268,7 +291,7 @@ function onPointerMove(evt) {
                     highlightStyle = new ol.style.Style({
                         image: new ol.style.Circle({
                             fill: new ol.style.Fill({
-                                color: "#ffff00"
+                                color: "rgba(255, 255, 0, 1.00)"
                             }),
                             radius: radius
                         })
@@ -279,7 +302,7 @@ function onPointerMove(evt) {
 
                     highlightStyle = new ol.style.Style({
                         stroke: new ol.style.Stroke({
-                            color: '#ffff00',
+                            color: 'rgba(255, 255, 0, 1.00)',
                             lineDash: null,
                             width: featureWidth
                         })
@@ -288,7 +311,7 @@ function onPointerMove(evt) {
                 } else {
                     highlightStyle = new ol.style.Style({
                         fill: new ol.style.Fill({
-                            color: '#ffff00'
+                            color: 'rgba(255, 255, 0, 1.00)'
                         })
                     })
                 }
@@ -466,6 +489,7 @@ map.on('singleclick', onSingleClickWMS);
 //get container
 var topLeftContainerDiv = document.getElementById('top-left-container')
 var bottomLeftContainerDiv = document.getElementById('bottom-left-container')
+var topRightContainerDiv = document.getElementById('top-right-container')
 var bottomRightContainerDiv = document.getElementById('bottom-right-container')
 
 //title
