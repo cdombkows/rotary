@@ -45,13 +45,15 @@ var lyr_ClubLocation_2 = new ol.layer.Vector({
     <img src="styles/legend/ClubLocation_2_2.png" /> East Jordan<br />\
     <img src="styles/legend/ClubLocation_2_3.png" /> Grand Rapids<br />\
     <img src="styles/legend/ClubLocation_2_4.png" /> Grayling<br />\
-    <img src="styles/legend/ClubLocation_2_5.png" /> Holland<br />\
-    <img src="styles/legend/ClubLocation_2_6.png" /> Muskegon<br />\
-    <img src="styles/legend/ClubLocation_2_7.png" /> Petoskey<br />\
-    <img src="styles/legend/ClubLocation_2_8.png" /> Reed City<br />\
-    <img src="styles/legend/ClubLocation_2_9.png" /> Sault Ste Marie<br />\
-    <img src="styles/legend/ClubLocation_2_10.png" /> Traverse City<br />\
-    <img src="styles/legend/ClubLocation_2_11.png" /> <br />' });
+    <img src="styles/legend/ClubLocation_2_5.png" /> Greenville<br />\
+    <img src="styles/legend/ClubLocation_2_6.png" /> Holland<br />\
+    <img src="styles/legend/ClubLocation_2_7.png" /> Muskegon<br />\
+    <img src="styles/legend/ClubLocation_2_8.png" /> Petoskey<br />\
+    <img src="styles/legend/ClubLocation_2_9.png" /> Reed City<br />\
+    <img src="styles/legend/ClubLocation_2_10.png" /> Sault Ste Marie<br />\
+    <img src="styles/legend/ClubLocation_2_11.png" /> Shelby<br />\
+    <img src="styles/legend/ClubLocation_2_12.png" /> Traverse City<br />\
+    <img src="styles/legend/ClubLocation_2_13.png" /> <br />' });
 
 lyr_OSMStandard_0.setVisible(true);lyr_MixerLocation_1.setVisible(true);lyr_ClubLocation_2.setVisible(true);
 var layersList = [lyr_OSMStandard_0,lyr_MixerLocation_1,lyr_ClubLocation_2];
